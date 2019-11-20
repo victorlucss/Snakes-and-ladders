@@ -1,7 +1,9 @@
 package Iterador.interfaces;
 
-public interface IIterador {
+public interface IIterador<T> {
 
-	public Object proximo();
-
+	T proximo();
+	T anterior();
+	T atual();
+	void setIndiceAtual(int x);
 }

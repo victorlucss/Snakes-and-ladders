@@ -13,8 +13,8 @@ public class ControladorMensagem {
 		return controladorMensagem;
 	}
 
-	public void exibirMensagem(Component parent, String mensagem) {
-		JOptionPane.showMessageDialog(parent, mensagem);
+	public void exibirMensagem(String mensagem) {
+		JOptionPane.showMessageDialog(null, mensagem);
 
 
 	}

@@ -1,22 +1,51 @@
 package Iterador.concrete;
 
 import Iterador.interfaces.IIterador;
-import Jogador.ControladorJogador;
 import Jogador.Jogador;
 
 import java.util.List;
 
+public class IteradorJogador implements IIterador<Jogador> {
 
-public class IteradorJogador implements IIterador {
+    private List<Jogador> jogadores;
+    private int indiceAtual;
 
-	private ControladorJogador controladorJogador;
+    public IteradorJogador(List<Jogador> jogadores){
+        this.jogadores = jogadores;
+        indiceAtual = 0;
 
-	public IteradorJogador(List<Jogador> jogadores) {
+    }
 
-	}
+    @Override
+    public Jogador proximo() {
+        Jogador jogador;
 
-	public Jogador proximo() {
-		return null;
-	}
+        if(indiceAtual+1 == jogadores.size()) indiceAtual = 0;
+        else indiceAtual++;
 
+        jogador = jogadores.get(indiceAtual);
+
+
+
+        return jogador;
+    }
+
+    @Override
+    public Jogador anterior() {
+        Jogador jogador;
+
+        if(indiceAtual-1 >= 0) indiceAtual--;
+        jogador = jogadores.get(indiceAtual);
+
+        return jogador;
+    }
+
+    public Jogador atual(){
+        return jogadores.get(indiceAtual);
+    }
+
+    @Override
+    public void setIndiceAtual(int indiceAtual) {
+        this.indiceAtual = indiceAtual;
+    }
 }

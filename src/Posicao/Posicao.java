@@ -10,6 +10,11 @@ public class Posicao {
         this.eixoY = eixoY;
     }
 
+    public Posicao(){
+        this.eixoX = 50;
+        this.eixoY = 20 + (88 * 9);
+    }
+
     public int getEixoX() {
         return eixoX;
     }
@@ -24,5 +29,21 @@ public class Posicao {
 
     public void setEixoY(int eixoY) {
         this.eixoY = eixoY;
+    }
+
+    public static Posicao getPadrao(){
+        return new Posicao();
+    }
+
+    public boolean compararCom(Posicao posicao){
+        return this.getEixoX() == posicao.getEixoX() && this.getEixoY() == posicao.getEixoY();
+    }
+
+    @Override
+    public String toString() {
+        return "Posicao{" +
+                "eixoX=" + eixoX +
+                ", eixoY=" + eixoY +
+                '}';
     }
 }

@@ -1,19 +1,23 @@
 package Tabuleiro;
 
+import Posicao.Posicao;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class ControladorTabuleiro {
 
-	private String CAMINHO_IMAGEM_TABULEIRO = "../Assets/tabuleiro.png";
-
-	private Tabuleiro tabuleiro;
+	private List<PecaTabuleiro> pecasTabuleiro;
 
 	public ControladorTabuleiro(){
-		this.tabuleiro = new Tabuleiro(this.CAMINHO_IMAGEM_TABULEIRO);
+		this.pecasTabuleiro = new ArrayList<>();
 	}
 
-	public void renderizarTabuleiro() {
-
-
-
+	public void adicionarPeca(PecaTabuleiro pecaTabuleiro) {
+		this.pecasTabuleiro.add(pecaTabuleiro);
 	}
 
+	public List<PecaTabuleiro> getPecasTabuleiro() {
+		return pecasTabuleiro;
+	}
 }

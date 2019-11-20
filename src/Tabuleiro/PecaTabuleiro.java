@@ -1,39 +1,44 @@
 package Tabuleiro;
 
+import Jogador.Jogador;
 import Posicao.Posicao;
 
 import javax.imageio.ImageIO;
-import javax.swing.*;
 import java.awt.*;
-import java.awt.image.BufferedImage;
 import java.io.InputStream;
 
-public class PecaTabuleiro extends JComponent {
+public class PecaTabuleiro {
+    private Posicao posicao;
+    private String imagemDaPeca;
 
-    Posicao posicao;
-    JPanel panel;
+    public PecaTabuleiro(Posicao posicao, String imagemDaPeca){
+        this.posicao = posicao;
+        this.imagemDaPeca = imagemDaPeca;
+    }
 
-    public PecaTabuleiro(Posicao posicao){
+    public PecaTabuleiro(ImagemPecaEnum imagemPecaEnum){
+        this.posicao = Posicao.getPadrao();
+        this.imagemDaPeca = imagemPecaEnum.getCaminho();
+    }
+
+   public Image recuperarImagemPeca(){
+       try {
+
+           InputStream imgStream = getClass().getResourceAsStream(this.imagemDaPeca);
+           Image imagem = ImageIO.read(imgStream);
+            return imagem;
+       } catch(Exception e) {
+           System.out.println("Imagem da peça não localizada!");
+           return null;
+       }
+   }
+
+   public Posicao getPosicao(){
+        return this.posicao;
+   }
+
+    public void setPosicao(Posicao posicao){
         this.posicao = posicao;
     }
-
-    public void setPosicao(Posicao novaPosicao){
-        this.posicao = novaPosicao;
-    }
-
-    @Override
-    protected void paintComponent(Graphics g) {
-        try {
-            Graphics2D g2 = (Graphics2D) g;
-            InputStream imgStream = getClass().getResourceAsStream("../Assets/jogadorDois.png");
-            BufferedImage image = ImageIO.read(imgStream);
-            g2.drawImage(image, 45,810, panel);
-
-        }
-        catch(Exception e) {
-            System.out.println("Imagem do jogador não localizada!");
-        }
-    }
-
 
 }

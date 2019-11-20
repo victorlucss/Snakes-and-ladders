@@ -1,18 +1,19 @@
 package Casa.concrete;
 
-import Casa.interfaces.CasaEfeitoEspecial;
 import EfeitoEspecial.interfaces.EfeitoEspecial;
 import Posicao.Posicao;
+import Casa.interfaces.Casa;
 
-public class CasaCobra extends CasaEfeitoEspecial {
+public class CasaCobra extends Casa {
 
     public CasaCobra(int numero, Posicao posicao, EfeitoEspecial efeitoEspecial) {
         super(numero, posicao, efeitoEspecial);
     }
 
     @Override
-    public Posicao aplicarEfeito() {
-        return null;
+    public Posicao posicaoEfeito() {
+        return this.getEfeitoEspecial().posicaoEfeito();
     }
+
 
 }

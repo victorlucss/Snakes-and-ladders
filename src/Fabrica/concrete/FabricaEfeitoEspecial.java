@@ -8,24 +8,23 @@ import Fabrica.TiposEnum.EfeitoEspecialEnum;
 import Fabrica.interfaces.IFabrica;
 import Posicao.Posicao;
 
-public class FabricaEfeitoEspecial implements IFabrica<EfeitoEspecialEnum, EfeitoEspecial, Integer, Integer> {
+public class FabricaEfeitoEspecial implements IFabrica<EfeitoEspecialEnum, EfeitoEspecial, Posicao, String[]> {
 
     @Override
-    public EfeitoEspecial criar(EfeitoEspecialEnum tipo, Integer eixoX, Integer eixoY) {
-        Posicao posicao = new Posicao(eixoX, eixoY);
+    public EfeitoEspecial criar(EfeitoEspecialEnum tipo, Posicao posicaoDepoisDoEfeito, String... args) {
         EfeitoEspecial efeitoEspecial;
 
         switch (tipo){
             case OBSTACULO_COBRA:
-                efeitoEspecial = new CobraEfeitoEspecial(posicao);
+                return new CobraEfeitoEspecial(posicaoDepoisDoEfeito);
 
             case OBSTACULO_ESCADA:
-                efeitoEspecial = new EscadaEfeitoEspecial(posicao);
+                return  new EscadaEfeitoEspecial(posicaoDepoisDoEfeito);
 
             default:
-                efeitoEspecial = new BonusEfeitoEspecial(posicao);
+                return new BonusEfeitoEspecial();
         }
 
-        return efeitoEspecial;
+
     }
 }
